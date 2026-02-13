@@ -1,0 +1,141 @@
+---
+import { Coins, User, Menu, X } from "lucide-preact";
+
+const navLinks = [
+  { href: "#tariffs", label: "Цены", icon: Coins },
+  { href: "#", label: "Почему мы" },
+  { href: "#", label: "О нас" },
+];
+---
+
+<header
+  class="header fixed w-full top-0 z-30 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300"
+  role="banner"
+>
+  <div
+    class="header__container container flex justify-between items-center py-4 px-5 relative z-30"
+  >
+    <a
+      class="header__logo flex font-bold text-xl md:text-2xl text-neutral-100 hover:text-primary active:text-primary transition-colors duration-300 focus-ring rounded"
+      href="#"
+    >
+      Pugovka
+    </a>
+
+    <nav
+      class="header__nav hidden md:flex items-center gap-x-1"
+      aria-label="Основное"
+    >
+      {
+        navLinks.map((item) => {
+          const Icon = item.icon;
+          return (
+            <a class="link-nav" href={item.href}>
+              {Icon ? <Icon size={20} strokeWidth={2} /> : null}
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="flex items-center gap-x-2">
+      <a class="link-outline hidden! md:inline-flex! focus-ring" href="#">
+        <User size={20} strokeWidth={2} />
+        Кабинет
+      </a>
+      <button
+        type="button"
+        class="mobile-menu-btn btn-icon flex md:hidden! focus-ring"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Открыть меню"
+      >
+        <Menu size={24} strokeWidth={2} />
+        <X size={24} strokeWidth={2} />
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-nav"
+    class="mobile-nav hidden fixed inset-0 z-20 flex-col min-h-dvh pt-24 pb-8 px-5 bg-neutral-900"
+    aria-hidden="true"
+    aria-label="Мобильное меню"
+  >
+    <div class="flex flex-col gap-1 flex-1 min-h-0">
+      {
+        navLinks.map((item) => {
+          const Icon = item.icon;
+          return (
+            <a
+              class="link-nav gap-x-3 py-3.5 border border-transparent hover:border-neutral-700/50 active:border-neutral-700/50 text-neutral-200"
+              href={item.href}
+            >
+              {Icon ? (
+                <Icon size={22} strokeWidth={2} className="text-primary/80" />
+              ) : null}
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </div>
+    <a class="btn-primary mt-auto shrink-0 rounded-xl px-4 py-3.5" href="#">
+      <User size={22} strokeWidth={2} />
+      Кабинет
+    </a>
+  </div>
+</header>
+
+<script>
+  function initHeaderScroll() {
+    const header = document.querySelector(".header");
+    if (!header) return;
+    const headerEl = header;
+    function updateHeader() {
+      headerEl.classList.toggle("header--scrolled", window.scrollY > 0);
+    }
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  }
+
+  function initMobileMenu() {
+    const btn = document.querySelector(".mobile-menu-btn");
+    const nav = document.getElementById("mobile-nav");
+    if (!btn || !nav) return;
+    const btnEl = btn;
+    const navEl = nav;
+
+    function openMenu() {
+      navEl.classList.remove("hidden");
+      navEl.classList.add("flex");
+      btnEl.setAttribute("aria-expanded", "true");
+      btnEl.setAttribute("aria-label", "Закрыть меню");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+      navEl.classList.add("hidden");
+      navEl.classList.remove("flex");
+      btnEl.setAttribute("aria-expanded", "false");
+      btnEl.setAttribute("aria-label", "Открыть меню");
+      document.body.style.overflow = "";
+    }
+
+    function toggleMenu() {
+      navEl.classList.contains("flex") ? closeMenu() : openMenu();
+    }
+
+    btnEl.addEventListener("click", toggleMenu);
+    navEl
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && navEl.classList.contains("flex")) closeMenu();
+    });
+  }
+
+  initMobileMenu();
+  initHeaderScroll();
+</script>

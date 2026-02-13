@@ -1,0 +1,387 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+  Gauge,
+  Rocket,
+  Users,
+  Wrench,
+  MonitorSmartphone,
+  Glasses,
+  MessageCircleQuestionMark,
+  Handshake,
+  BadgePercent,
+  Waypoints,
+  Infinity,
+  Youtube,
+  ExternalLink,
+  Quote,
+} from "lucide-preact";
+---
+
+<Layout>
+  <section class="bg-grid" aria-labelledby="hero-title">
+    <div
+      class="container h-screen flex items-center xl:gap-y-5 gap-y-4 justify-center flex-col"
+    >
+      <h1 id="hero-title" class="hero-title">Pugovka Booster</h1>
+      <p class="hero-subtitle">
+        Ускоритель интернета для стабильного доступа к&nbsp;любимым сайтам
+        и&nbsp;сервисам без лишних сложностей
+      </p>
+      <a href="#" class="btn-cta">
+        <Rocket strokeWidth={2} />
+        Ускорить
+      </a>
+    </div>
+  </section>
+  <section class="relative overflow-hidden" aria-labelledby="advantages-title">
+    <div class="container section">
+      <h2 id="advantages-title" class="section-title">
+        Наши <span class="text-primary">преимущества</span>
+      </h2>
+      <div class="grid md:grid-cols-3 grid-cols-1 gap-6 xl:pt-8 pt-6">
+        {
+          [
+            {
+              icon: <Wrench size={36} strokeWidth={2} />,
+              title: "Быстрая настройка",
+              description: "Настройка за пару минут без сложных конфигураций",
+            },
+            {
+              icon: <Users size={36} strokeWidth={2} />,
+              title: "Для тебя и твоих близких",
+              description: "Один аккаунт для всей семьи - до 10 устройств",
+            },
+            {
+              icon: <Gauge size={36} strokeWidth={2} />,
+              title: "Высокая скорость",
+              description: "Стабильное соединение без задержек и обрывов",
+            },
+            {
+              icon: <MonitorSmartphone size={36} strokeWidth={2} />,
+              title: "Поддерживаются все устройства",
+              description: "Работает на компьютерах, телефонах и планшетах",
+            },
+            {
+              icon: <Glasses size={36} strokeWidth={2} />,
+              title: "Конфиденциальность",
+              description: "Ваши данные защищены современным шифрованием",
+            },
+            {
+              icon: <MessageCircleQuestionMark size={36} strokeWidth={2} />,
+              title: "Поддержка",
+              description: "Наша команда всегда готова помочь 24/7",
+            },
+          ].map((item) => (
+            <div class="group relative card-interactive p-6">
+              <div class="card-overlay group-hover:from-primary/5 group-hover:to-transparent" />
+              <div class="relative z-10 flex flex-col">
+                <div class="text-primary mb-3 group-hover:-translate-y-1 transition-transform duration-300">
+                  {item.icon}
+                </div>
+                <h3 class="text-xl mb-1 font-bold text-neutral-100 group-hover:text-primary transition-colors duration-300">
+                  {item.title}
+                </h3>
+                <p class="text-neutral-400 text-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section
+    class="bg-dots relative overflow-hidden"
+    aria-labelledby="youtube-title"
+  >
+    <div class="container min-h-screen flex items-center justify-center py-20">
+      <div
+        class="group/card relative bg-neutral-900 w-full md:max-w-2xl card-interactive p-8 cursor-default"
+      >
+        <div
+          class="card-overlay group-hover/card:from-primary/5 group-hover/card:to-transparent"
+        >
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row gap-6 items-start">
+          <div
+            class="shrink-0 w-16 h-16 rounded-2xl bg-neutral-800 border border-neutral-700/50 flex items-center justify-center text-primary group-hover/card:scale-105 group-hover/card:border-primary/30 transition-all duration-300"
+          >
+            <Youtube size={32} strokeWidth={2} />
+          </div>
+          <div class="flex flex-col gap-2 min-w-0">
+            <h3
+              id="youtube-title"
+              class="text-xl font-bold text-neutral-100 group-hover/card:text-primary transition-colors duration-300"
+            >
+              Создано при участии команды
+            </h3>
+            <p class="text-neutral-400 leading-relaxed">
+              Этот ускоритель интернета создан при участии YouTube-канала
+              <a
+                class="inline-flex items-center gap-1.5 text-primary font-semibold transition-all duration-300 focus-ring active:opacity-90 rounded"
+                href="https://www.youtube.com/channel/UCcCD--ZQ7A8qq3SXGX9zAtg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Пуговкина
+                <ExternalLink
+                  size={16}
+                  strokeWidth={2}
+                  class="inline opacity-80"
+                />
+              </a>. Мы делаем инструменты, которые упрощают доступ к привычным
+              онлайн-сервисам.
+            </p>
+            <a
+              href="https://www.youtube.com/channel/UCcCD--ZQ7A8qq3SXGX9zAtg"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-secondary self-start mt-1"
+            >
+              <Youtube size={20} strokeWidth={2} />
+              Смотреть на YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="tariffs-title" id="tariffs">
+    <div class="container section">
+      <h2 id="tariffs-title" class="section-title">
+        Лучшие <span class="text-primary">тарифы</span>
+      </h2>
+      <div
+        class="flex md:flex-row flex-col justify-between items-center gap-8 xl:pt-8 pt-6"
+      >
+        <div class="w-full flex flex-col gap-6">
+          {
+            [
+              {
+                title: "Ускоритель интернета",
+                description:
+                  "Тарифный план для регионов, где не работают любимые сервисы",
+                badge: "ПОПУЛЯРНЫЙ",
+                devices: "10 Устройств",
+                servers: "1 Сервер",
+                price: "199.00 ₽",
+              },
+              {
+                title: "Ускоритель чебурнета",
+                description:
+                  "Тарифный план для регионов, где работают только российские сервисы",
+                badge: null,
+                devices: "10 Устройств",
+                servers: "2 Сервера",
+                price: "349.00 ₽",
+              },
+              {
+                title: "Тариф на сутки",
+                description: "Если нужно ускорить интернет и чебурнет на денёк",
+                badge: null,
+                devices: "10 Устройств",
+                servers: "2 Сервера",
+                price: "30.00 ₽",
+              },
+            ].map((tariff) => (
+              <div class="group relative card-gradient card-gradient--lift-sm p-6">
+                {tariff.badge && (
+                  <div class="absolute -top-3 right-5.5 text-xs font-bold px-3 py-1 rounded-full bg-primary text-neutral-900">
+                    {tariff.badge}
+                  </div>
+                )}
+                <div class="flex flex-col gap-4">
+                  <div>
+                    <h3 class="text-2xl font-bold text-neutral-100 mb-2">
+                      {tariff.title}
+                    </h3>
+                    <p class="text-neutral-400">{tariff.description}</p>
+                  </div>
+                  <div class="flex flex-wrap items-center md:gap-3 gap-2 text-sm">
+                    <div class="flex items-center gap-2 bg-neutral-800/50 px-3 py-1.5 rounded-lg">
+                      {tariff.title === "Тариф на сутки" ? (
+                        <span class="text-primary font-semibold">3 ГБ</span>
+                      ) : (
+                        <>
+                          <Infinity class="size-4 text-neutral-300" />
+                          <span class="text-primary font-semibold">
+                            Безлимит
+                          </span>
+                        </>
+                      )}
+                    </div>
+                    <div class="bg-neutral-800/50 px-3 py-1.5 rounded-lg">
+                      <span class="text-neutral-300">{tariff.devices}</span>
+                    </div>
+                    <div class="bg-neutral-800/50 px-3 py-1.5 rounded-lg">
+                      <span class="text-neutral-300">{tariff.servers}</span>
+                    </div>
+                  </div>
+                  <div class="border-t pt-4 border-neutral-700 flex items-center justify-between">
+                    <div>
+                      <p class="text-3xl font-bold text-primary">
+                        <span class="text-neutral-400 text-sm">от</span>
+                        {tariff.price}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      class="bg-primary cursor-pointer text-neutral-900 px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 active:bg-primary/90 transition-colors"
+                    >
+                      Выбрать
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="md:flex hidden w-full items-center justify-center">
+          <img
+            class="rounded-2xl"
+            src="/miyabi.webp"
+            alt="Декор: Miyabi"
+            width="400"
+            height="300"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bg-grid" aria-labelledby="more-title">
+    <div class="container section">
+      <h2 id="more-title" class="section-title--center">А еще...</h2>
+      <div class="grid md:grid-cols-3 grid-cols-1 gap-8 pt-8">
+        {
+          [
+            {
+              icon: <Handshake size={56} strokeWidth={2} />,
+              title: "Реферальная программа",
+              description:
+                "Приглашайте друзей и получайте бонусы за каждого нового пользователя",
+            },
+            {
+              icon: <BadgePercent size={56} strokeWidth={2} />,
+              title: "Программа лояльности",
+              description:
+                "Накопительные скидки и специальные предложения для постоянных клиентов",
+            },
+            {
+              icon: <Waypoints size={56} strokeWidth={2} />,
+              title: "Быстрое развитие сервиса",
+              description:
+                "Мы постоянно улучшаем сервис, добавляем новые функции и серверы",
+            },
+          ].map((item) => (
+            <div class="group relative card-gradient card-gradient--lift from-primary/5 via-primary/0 to-primary/2 p-8">
+              <div class="card-overlay group-hover:from-primary/5 group-hover:to-transparent" />
+              <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                <div class="text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  {item.icon}
+                </div>
+                <h3 class="text-2xl font-bold text-neutral-100 group-hover:text-primary transition-colors duration-300">
+                  {item.title}
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  {item.description}
+                </p>
+                <div class="mt-2 w-16 h-1 bg-primary/50 group-hover:w-24 transition-all duration-300" />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="relative overflow-hidden" aria-labelledby="quote-ref">
+    <div
+      class="container min-h-screen flex flex-col gap-y-12 xl:gap-y-16 justify-center section"
+    >
+      <div
+        class="group/quote relative card-interactive p-8 md:p-10 cursor-default max-w-4xl"
+      >
+        <div
+          class="card-overlay group-hover/quote:from-primary/5 group-hover/quote:to-transparent"
+        >
+        </div>
+        <div class="relative z-10 flex gap-x-4">
+          <Quote
+            size={40}
+            className="shrink-0 text-primary fill-primary rotate-180 mt-1 group-hover/quote:scale-110 transition-transform duration-300"
+          />
+          <blockquote
+            id="quote-ref"
+            class="md:text-5xl text-3xl flex flex-col font-semibold leading-tight"
+          >
+            Ваше окно в&nbsp;мир должно быть открыто.
+            <span class="text-primary">Мы&nbsp;за&nbsp;этим следим.</span>
+          </blockquote>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row md:items-end md:justify-between gap-10 md:gap-8"
+      >
+        <div
+          class="group/author flex items-center z-20 gap-4 p-4 rounded-2xl border border-neutral-700/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 active:border-primary/40 active:shadow-xl active:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 active:-translate-y-1 w-fit"
+        >
+          <img
+            class="rounded-xl md:size-20 size-14 ring-2 ring-neutral-700 group-hover/author:ring-primary/40 transition-all duration-300"
+            src="/pugovkin.webp"
+            alt="Пуговкин — автор цитаты"
+            width="80"
+            height="80"
+            loading="lazy"
+          />
+          <div>
+            <p class="text-neutral-400 text-sm font-medium">Говорит</p>
+            <h2
+              class="md:text-3xl text-2xl font-semibold text-neutral-100 group-hover/author:text-primary transition-colors duration-300"
+            >
+              Пуговкин
+            </h2>
+          </div>
+        </div>
+
+        <div
+          class="relative flex flex-col items-center justify-center min-h-[180px] md:min-h-[220px]"
+        >
+          <svg
+            class="absolute inset-0 w-full h-full scale-150 md:scale-[1.8] opacity-90 pointer-events-none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1160 531.36"
+            role="img"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient
+                id="signature-gradient"
+                x1="787.69"
+                x2="372.27"
+                y1="-162.69"
+                y2="693.67"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0" stop-color="#525252" stop-opacity="0.6"></stop>
+                <stop offset="1" stop-color="#262626" stop-opacity="0.5"></stop>
+              </linearGradient>
+            </defs>
+            <path
+              fill="url(#signature-gradient)"
+              d="M1130.7981 3.7542C1095.8604 -13.1927 1038.3744 28.5047 984.8987 103.1611C989.6342 53.2581 980.7415 16.7403 956.9908 5.2165C922.0532 -11.7305 864.5625 29.967 811.0841 104.6239C815.8278 54.7204 806.9342 18.2026 783.178 6.6788C748.2422 -10.2682 690.7516 31.4293 637.2741 106.0859C642.0169 56.1827 633.1232 19.665 609.3671 8.1411C574.4322 -8.8058 516.9415 32.8916 463.4631 107.5487C468.2068 57.6449 459.3132 21.1273 435.5571 9.6034C400.6212 -7.3435 343.1315 34.3539 289.6531 109.0106C294.3959 59.1072 285.5022 22.5896 261.7461 11.0657C213.5116 -12.3327 122.3277 94.3528 58.0929 226.7699C-6.1419 359.187 -19.0704 503.8337 29.1645 527.2319C64.0998 544.1795 121.5898 502.4819 175.0682 427.8253C170.3254 477.7282 179.2191 514.2462 202.9752 525.77C237.9101 542.7166 295.4008 501.0191 348.8783 426.3624C344.1355 476.2663 353.0291 512.7833 376.7853 524.3072C411.7211 541.2547 469.2108 499.5571 522.6892 424.9005C517.9455 474.8034 526.8401 511.3214 550.5953 522.8452C585.5311 539.7919 643.0218 498.0943 696.4992 423.4376C691.7565 473.3415 700.6501 509.8585 724.4062 521.3833C759.3411 538.3299 816.8318 496.6323 870.3102 421.9757C865.5665 471.8786 874.4601 508.3966 898.2163 519.9204C946.4554 543.3187 1037.631 436.6335 1101.8715 304.2164C1166.1028 171.7993 1179.0794 27.176 1130.7981 3.7542Z"
+            ></path>
+          </svg>
+          <a
+            href="#"
+            class="link-hero-cta relative z-10 md:text-4xl text-2xl py-6 px-4"
+          >
+            Пришло время <span class="text-primary">ускорять</span> твой интернет
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

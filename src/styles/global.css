@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap");
+@import "tailwindcss";
+
+/* --- Theme --- */
+@theme {
+  --color-primary: oklch(79.5% 0.184 86.047);
+}
+
+/* --- Base --- */
+body {
+  font-family: "Google Sans", sans-serif;
+  @apply bg-neutral-900 text-neutral-100;
+}
+
+/* --- Layout --- */
+.container {
+  @apply mx-auto px-5 max-w-7xl;
+}
+
+.section {
+  @apply py-20 md:py-30 xl:py-40;
+}
+
+.section-title {
+  @apply text-4xl md:text-5xl xl:text-6xl font-semibold;
+}
+
+.section-title--center {
+  @apply text-4xl md:text-5xl xl:text-6xl font-semibold text-center;
+}
+
+/* --- Accessibility: focus ring --- */
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900;
+}
+
+/* ========== Header ========== */
+.header--scrolled {
+  @apply bg-neutral-900/80 backdrop-blur-md border-neutral-800/50;
+}
+
+.header:has(.mobile-menu-btn[aria-expanded="true"]) {
+  @apply bg-neutral-900/80 backdrop-blur-md border-neutral-800/50;
+}
+
+.mobile-menu-btn svg:first-of-type {
+  @apply inline-flex;
+}
+
+.mobile-menu-btn svg:last-of-type {
+  @apply hidden;
+}
+
+.mobile-menu-btn[aria-expanded="true"] svg:first-of-type {
+  @apply hidden;
+}
+
+.mobile-menu-btn[aria-expanded="true"] svg:last-of-type {
+  @apply inline-flex;
+}
+
+/* ========== Hero ========== */
+.hero-title {
+  @apply text-7xl xl:text-9xl font-bold text-center text-shadow-2xs text-shadow-primary;
+}
+
+.hero-subtitle {
+  @apply text-lg xl:text-2xl max-w-md md:max-w-xl xl:max-w-3xl text-center;
+}
+
+.btn-cta {
+  @apply flex items-center justify-center gap-x-2 rounded-xl p-3 font-medium transition-all duration-300;
+  @apply bg-neutral-100 text-neutral-900 xl:text-2xl md:text-xl;
+  @apply shadow-xl shadow-primary hover:shadow-2xs active:shadow-2xs;
+  @apply hover:bg-neutral-50 active:bg-neutral-50;
+}
+
+/* ========== Cards (advantages, youtube, tariffs, quote, etc.) ========== */
+.card-interactive {
+  @apply transition-all duration-500 cursor-crosshair overflow-hidden;
+  @apply border border-neutral-700/50 rounded-2xl;
+  @apply hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20;
+  @apply active:border-primary/50 active:shadow-2xl active:shadow-primary/20;
+  @apply hover:-translate-y-2 active:-translate-y-2;
+}
+
+.card-interactive--sm {
+  @apply hover:-translate-y-1 active:-translate-y-1;
+}
+
+.card-gradient {
+  @apply bg-linear-to-br border-2 border-primary/30 rounded-2xl transition-all duration-500;
+  @apply from-primary/5 to-primary/2;
+  @apply hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/20;
+  @apply active:border-primary/60 active:shadow-2xl active:shadow-primary/20;
+}
+
+.card-gradient--lift-sm {
+  @apply hover:-translate-y-1 active:-translate-y-1;
+}
+
+.card-gradient--lift {
+  @apply hover:-translate-y-2 active:-translate-y-2 cursor-crosshair;
+}
+
+.card-overlay {
+  @apply absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 transition-all duration-500;
+}
+
+/* ========== Buttons & links ========== */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-x-2 rounded-xl px-4 py-2.5 font-semibold transition-all duration-300;
+  @apply bg-primary text-neutral-900 border-2 border-primary;
+  @apply hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20;
+  @apply active:bg-primary/90 active:shadow-lg active:shadow-primary/20;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-x-2 rounded-xl px-4 py-2.5 font-medium transition-all duration-300;
+  @apply bg-neutral-800 border border-neutral-700/50 text-neutral-200;
+  @apply hover:bg-primary/10 hover:border-primary/40 hover:text-primary hover:shadow-lg hover:shadow-primary/10;
+  @apply active:bg-primary/10 active:border-primary/40 active:text-primary active:shadow-lg active:shadow-primary/10;
+}
+
+.btn-icon {
+  @apply hidden inline-flex items-center justify-center size-11 rounded-xl border border-neutral-700/50 transition-all duration-300;
+  @apply text-neutral-300 hover:text-primary hover:border-primary/40 hover:bg-neutral-800/60;
+  @apply active:text-primary active:border-primary/40 active:bg-neutral-800/60;
+}
+
+.link-nav {
+  @apply flex items-center gap-x-2 rounded-xl px-4 py-2.5 font-medium transition-all duration-300;
+  @apply text-neutral-300 hover:text-primary hover:bg-neutral-800/60 active:text-primary active:bg-neutral-800/60;
+}
+
+.link-outline {
+  @apply inline-flex items-center gap-x-2 rounded-xl px-4 py-2.5 font-medium transition-all duration-300;
+  @apply text-neutral-100 border border-neutral-700/50;
+  @apply hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:text-primary;
+  @apply active:border-primary/50 active:shadow-lg active:shadow-primary/10 active:text-primary;
+}
+
+.link-hero-cta {
+  @apply rounded-2xl font-semibold text-center transition-colors duration-300;
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900;
+  @apply hover:text-primary active:text-primary;
+}
+
+/* ========== Backgrounds ========== */
+.bg-grid {
+  background-image:
+    linear-gradient(#262626 1px, transparent 1px),
+    linear-gradient(90deg, #262626 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-dots {
+  background-image: radial-gradient(circle, #262626 1px, transparent 1px);
+  background-size: 24px 24px;
+}
