@@ -34,10 +34,18 @@
 @import "tailwindcss";
 
 /* --- Theme --- */
-/* oklch(79.5% 0.184 86.047) */
-/* rgb(11, 100, 244) */
 @theme {
-  --color-primary: oklch(79.5% 0.184 86.047);
+  --color-primary: rgb(11, 100, 244);
+  --color-neutral-50: rgb(241, 245, 249);
+  --color-neutral-100: rgb(241, 245, 249);
+  --color-neutral-200: rgb(210, 218, 228);
+  --color-neutral-300: rgb(180, 191, 206);
+  --color-neutral-400: rgb(148, 163, 184);
+  --color-neutral-500: rgb(95, 107, 127);
+  --color-neutral-600: rgb(68, 79, 99);
+  --color-neutral-700: rgb(42, 51, 70);
+  --color-neutral-800: rgb(15, 23, 42);
+  --color-neutral-900: rgb(12, 17, 31);
 }
 
 /* --- Base --- */
@@ -99,7 +107,7 @@ body {
 
 /* ========== Hero ========== */
 .hero-title {
-  @apply text-shadow-primary text-center text-7xl font-bold text-shadow-2xs xl:text-9xl;
+  @apply text-shadow-primary text-center text-7xl font-bold text-shadow-2xs md:text-8xl xl:text-9xl;
 }
 
 .hero-subtitle {
@@ -217,14 +225,14 @@ body {
 /* ========== Backgrounds ========== */
 .bg-grid {
   background-image:
-    linear-gradient(#262626 1px, transparent 1px),
-    linear-gradient(90deg, #262626 1px, transparent 1px);
+    linear-gradient(rgba(42, 51, 70, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 51, 70, 0.2) 1px, transparent 1px);
   background-size: 60px 60px;
   background-position: 20px;
 }
 
 .bg-dots {
-  background-image: radial-gradient(circle, #262626 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(42, 51, 70, 0.4) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
