@@ -33,7 +33,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png" sizes="any" />
 
-    <!-- Font preload -->
+    <!-- Performance hints -->
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="//kinescope.io" />
+    <link rel="dns-prefetch" href="//edge-ams-1.kinescopecdn.net" />
+
+    <!-- Critical CSS (remove render blocking) -->
+    <link
+      rel="preload"
+      href="/_astro/index.B5UC2mnc.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="/_astro/index.B5UC2mnc.css" />
+    </noscript>
+
+    <!-- Font preload (only critical weight) -->
     <link
       rel="preload"
       href="/fonts/google-sans-v67-cyrillic_latin-500.woff2"
@@ -43,10 +59,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
       fetchpriority="high"
     />
 
-    <!-- Performance hints -->
-    <meta http-equiv="x-dns-prefetch-control" content="on" />
-    <link rel="dns-prefetch" href="/kinescope.io" />
-    <link rel="dns-prefetch" href="/edge-ams-1.kinescopecdn.net" />
+    <!-- Hero image preload (improves LCP) -->
+    <link rel="preload" href="/miyabi.webp" as="image" fetchpriority="high" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
