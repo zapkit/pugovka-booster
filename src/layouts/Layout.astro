@@ -6,16 +6,18 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  style?: string;
 }
 
 const {
   title = "Pugovka Booster: надёжный ускоритель интернета",
   description = "Ускоритель интернета для стабильного доступа к любимым сайтам и сервисам без лишних сложностей. Быстрая настройка, до 10 устройств, поддержка 24/7.",
+  style,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class={style}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
