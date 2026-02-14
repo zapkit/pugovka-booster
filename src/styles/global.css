@@ -36,6 +36,7 @@
 /* --- Theme --- */
 @theme {
   --color-primary: rgb(11, 100, 244);
+  --color-primary-foreground: rgb(5, 8, 18);
   --color-neutral-50: rgb(241, 245, 249);
   --color-neutral-100: rgb(241, 245, 249);
   --color-neutral-200: rgb(210, 218, 228);
@@ -117,7 +118,7 @@ body {
 .btn-cta {
   @apply flex items-center justify-center gap-x-3 rounded-2xl px-5 py-3 font-semibold transition-all duration-300;
   @apply focus-visible:ring-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900;
-  @apply bg-neutral-100 text-neutral-900 md:text-xl xl:text-2xl;
+  @apply text-primary-foreground bg-neutral-100 md:text-xl xl:text-2xl;
   @apply shadow-primary hover:shadow-primary/40 active:shadow-primary shadow-xl;
   @apply hover:scale-105 hover:bg-neutral-50 active:scale-[0.98] active:bg-neutral-50;
   @apply hover:border-primary/30 border-2 border-transparent;
@@ -137,7 +138,6 @@ body {
 }
 
 /* ========== Terms ========== */
-
 .offer-section {
   @apply border-b border-neutral-800/60 pb-6 last:border-b-0;
 }
@@ -147,8 +147,8 @@ body {
   @apply border-primary border-l-4 pl-4;
 }
 
-.prose-offer a:not(.text-primary) {
-  @apply text-primary;
+.offer-section__link {
+  @apply decoration-primary/50 hover:decoration-primary text-neutral-100 underline underline-offset-2 transition-colors duration-300;
 }
 
 /* ========== Cards (advantages, youtube, tariffs, quote, etc.) ========== */
@@ -186,7 +186,7 @@ body {
 /* ========== Buttons & links ========== */
 .btn-primary {
   @apply inline-flex items-center justify-center gap-x-2 rounded-xl px-4 py-2.5 font-semibold transition-all duration-300;
-  @apply bg-primary border-primary border-2 text-neutral-900;
+  @apply bg-primary border-primary text-primary-foreground border-2;
   @apply hover:bg-primary/90 hover:shadow-primary/20 hover:shadow-lg;
   @apply active:bg-primary/90 active:shadow-primary/20 active:shadow-lg;
 }
@@ -247,4 +247,36 @@ body {
   min-width: 100vw;
   min-height: 56.25vw;
   background: rgba(23, 23, 23, 1);
+}
+
+/* ========== Custom Scrollbar ========== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-neutral-900);
+}
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary), rgba(11, 100, 244, 0.7));
+  border-radius: 9999px;
+  border: 3px solid var(--color-neutral-900);
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-neutral-900);
 }

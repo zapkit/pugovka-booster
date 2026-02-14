@@ -12,8 +12,10 @@ interface Props {
 const {
   title = "Pugovka Booster: надёжный ускоритель интернета",
   description = "Ускоритель интернета для стабильного доступа к любимым сайтам и сервисам без лишних сложностей. Быстрая настройка, до 10 устройств, поддержка 24/7.",
-  style,
+  style = "",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -21,24 +23,67 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <link rel="icon" href="/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png" sizes="any" />
+
+    <!-- Font preload -->
+    <link
+      rel="preload"
+      href="/fonts/google-sans-v67-cyrillic_latin-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/google-sans-v67-cyrillic_latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Performance hints -->
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="/kinescope.io" />
+    <link rel="dns-prefetch" href="/edge-ams-1.kinescopecdn.net" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content="/miyabi.webp" />
+    <meta property="og:site_name" content="Pugovka Booster" />
     <meta property="og:locale" content="ru_RU" />
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/miyabi.webp" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Pugovka Booster",
+        "url": "https://pugovka-booster.vercel.app"
+      }
+    </script>
+
+    <!-- Generator -->
+    <meta name="generator" content={Astro.generator} />
   </head>
-  <body>
+
+  <body class="antialiased">
     <Header />
     <main id="main-content">
       <slot />

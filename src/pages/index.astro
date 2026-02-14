@@ -23,7 +23,10 @@ import {
     <div class="absolute inset-0 z-0 overflow-hidden">
       <iframe
         class="video-background"
-        src="https://kinescope.io/embed/kLrnjgBQ27rvKoePRdYv8M?autoplay=1&muted=1&loop=1"
+        data-src="https://kinescope.io/embed/kLrnjgBQ27rvKoePRdYv8M?autoplay=1&muted=1&loop=1"
+        title="Фоновое видео"
+        width="1920"
+        height="1080"
         frameborder="0"
         tabindex="-1"
         allow="autoplay; encrypted-media"
@@ -120,7 +123,15 @@ import {
           <div
             class="group-hover/card:border-primary/30 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-neutral-700/50 transition-all duration-300 group-hover/card:scale-105"
           >
-            <img class="rounded-2xl" src="/pugovkin.webp" alt="Канал Пуговкина" />
+            <img
+              class="size-16 rounded-2xl object-cover"
+              src="/pugovkin.webp"
+              alt="Канал Пуговкина"
+              width="64"
+              height="64"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div class="flex min-w-0 flex-col gap-2">
             <h3
@@ -146,8 +157,9 @@ import {
               target="_blank"
               rel="noopener noreferrer"
               class="btn-secondary mt-1 self-start"
+              aria-label="Смотреть канал Пуговкина на YouTube"
             >
-              <Youtube size={20} strokeWidth={2} />
+              <Youtube size={20} strokeWidth={2} aria-hidden="true" />
               Смотреть на YouTube
             </a>
           </div>
@@ -191,7 +203,7 @@ import {
             ].map((tariff) => (
               <div class="group card-gradient card-gradient--lift-sm relative p-6">
                 {tariff.badge && (
-                  <div class="bg-primary absolute -top-3 right-5.5 rounded-full px-3 py-1 text-xs font-bold text-neutral-900">
+                  <div class="bg-primary absolute -top-3 right-5.5 rounded-full px-3 py-1 text-xs font-bold text-neutral-100">
                     {tariff.badge}
                   </div>
                 )}
@@ -227,7 +239,8 @@ import {
                     </div>
                     <a
                       href="https://cabinet.pugovkabooster.com/"
-                      class="bg-primary hover:bg-primary/90 active:bg-primary/90 cursor-pointer rounded-lg px-6 py-2 font-semibold text-neutral-900 transition-colors duration-300"
+                      class="bg-primary hover:bg-primary/90 active:bg-primary/90 cursor-pointer rounded-lg px-6 py-2 font-semibold text-neutral-100 transition-colors duration-300"
+                      aria-label={`Выбрать тариф: ${tariff.title}`}
                     >
                       Выбрать
                     </a>
@@ -239,12 +252,13 @@ import {
         </div>
         <div class="hidden w-full items-center justify-center md:flex">
           <img
-            class="rounded-2xl"
+            class="h-auto w-full max-w-[400px] rounded-2xl object-cover"
             src="/miyabi.webp"
             alt="Декор: Miyabi"
             width="400"
             height="300"
             loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -315,20 +329,21 @@ import {
           class="group/author hover:border-primary/40 hover:shadow-primary/10 active:border-primary/40 active:shadow-primary/10 z-20 flex w-fit items-center gap-4 rounded-2xl border border-neutral-700/50 p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl active:-translate-y-1 active:shadow-xl"
         >
           <img
-            class="group-hover/author:ring-primary/40 size-14 rounded-xl ring-2 ring-neutral-700 transition-all duration-300 md:size-20"
+            class="group-hover/author:ring-primary/40 size-14 rounded-xl object-cover ring-2 ring-neutral-700 transition-all duration-300 md:size-20"
             src="/pugovkin.webp"
             alt="Пуговкин — автор цитаты"
             width="80"
             height="80"
             loading="lazy"
+            decoding="async"
           />
           <div>
             <p class="text-sm font-medium text-neutral-400">Говорит</p>
-            <h2
+            <p
               class="group-hover/author:text-primary text-2xl font-semibold text-neutral-100 transition-colors duration-300 md:text-3xl"
             >
               Пуговкин
-            </h2>
+            </p>
           </div>
         </div>
 
@@ -349,8 +364,8 @@ import {
                 y2="693.67"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0" stop-color="#525252" stop-opacity="0.6"></stop>
-                <stop offset="1" stop-color="#262626" stop-opacity="0.5"></stop>
+                <stop offset="0" stop-color="rgb(15, 23, 42)" stop-opacity="0.6"></stop>
+                <stop offset="1" stop-color="rgb(15, 23, 42)" stop-opacity="0.6"></stop>
               </linearGradient>
             </defs>
             <path
@@ -361,6 +376,7 @@ import {
           <a
             href="https://cabinet.pugovkabooster.com/"
             class="link-hero-cta relative z-10 px-4 py-6 text-2xl md:text-4xl"
+            aria-label="Перейти в кабинет и ускорить интернет"
           >
             Пришло время <span class="text-primary">ускорять</span> твой интернет
           </a>
@@ -368,4 +384,17 @@ import {
       </div>
     </div>
   </section>
+
+  <!-- Defer Kinescope iframe: set src after parse to avoid blocking initial render -->
+  <script is:inline>
+    (function () {
+      function loadVideo() {
+        var iframe = document.querySelector(".video-background");
+        if (iframe && iframe.dataset.src) iframe.src = iframe.dataset.src;
+      }
+      if (document.readyState === "loading")
+        document.addEventListener("DOMContentLoaded", loadVideo);
+      else loadVideo();
+    })();
+  </script>
 </Layout>

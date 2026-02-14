@@ -19,7 +19,7 @@ const navLinks = [
       class="header__logo hover:text-primary active:text-primary focus-ring flex rounded text-xl font-bold text-neutral-100 transition-colors duration-300 md:text-2xl"
       href="/"
     >
-      <img src="/logo.webp" alt="Логотип Pugovka Booster" class="w-24" />
+      <img src="/logo.webp" alt="Логотип Pugovka Booster" class="w-24" width="96" height="32" fetchpriority="high" />
     </a>
 
     <nav class="header__nav hidden items-center gap-x-1 md:flex" aria-label="Основное">
@@ -40,8 +40,9 @@ const navLinks = [
       <a
         class="link-outline focus-ring hidden! md:inline-flex!"
         href="https://cabinet.pugovkabooster.com/"
+        aria-label="Войти в личный кабинет"
       >
-        <User size={20} strokeWidth={2} />
+        <User size={20} strokeWidth={2} aria-hidden="true" />
         Кабинет
       </a>
       <button
@@ -82,8 +83,9 @@ const navLinks = [
     <a
       class="btn-primary mt-auto shrink-0 rounded-xl px-4 py-3.5"
       href="https://cabinet.pugovkabooster.com/"
+      aria-label="Войти в личный кабинет"
     >
-      <User size={22} strokeWidth={2} />
+      <User size={22} strokeWidth={2} aria-hidden="true" />
       Кабинет
     </a>
   </div>
