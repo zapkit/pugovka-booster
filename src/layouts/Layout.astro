@@ -8,7 +8,10 @@ interface Props {
   description?: string;
 }
 
-const { title = "Pugovka Booster: надёжный ускоритель интернета", description = "Ускоритель интернета для стабильного доступа к любимым сайтам и сервисам без лишних сложностей. Быстрая настройка, до 10 устройств, поддержка 24/7." } = Astro.props;
+const {
+  title = "Pugovka Booster: надёжный ускоритель интернета",
+  description = "Ускоритель интернета для стабильного доступа к любимым сайтам и сервисам без лишних сложностей. Быстрая настройка, до 10 устройств, поддержка 24/7.",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -17,8 +20,8 @@ const { title = "Pugovka Booster: надёжный ускоритель инте
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="icon" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="generator" content={Astro.generator} />

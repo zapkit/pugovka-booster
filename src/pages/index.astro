@@ -19,27 +19,46 @@ import {
 ---
 
 <Layout>
-  <section class="bg-grid" aria-labelledby="hero-title">
+  <section class="relative min-h-screen overflow-hidden" aria-labelledby="hero-title">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <iframe
+        class="video-background"
+        src="https://kinescope.io/embed/kLrnjgBQ27rvKoePRdYv8M?autoplay=1&muted=1&loop=1"
+        frameborder="0"
+        tabindex="-1"
+        allow="autoplay; encrypted-media"
+        allowfullscreen></iframe>
+    </div>
     <div
-      class="container h-screen flex items-center xl:gap-y-5 gap-y-4 justify-center flex-col"
+      class="absolute inset-0 z-10 flex min-h-screen items-center justify-center bg-neutral-900/50"
     >
-      <h1 id="hero-title" class="hero-title">Pugovka Booster</h1>
-      <p class="hero-subtitle">
-        Ускоритель интернета для стабильного доступа к&nbsp;любимым сайтам
-        и&nbsp;сервисам без лишних сложностей
-      </p>
-      <a href="#" class="btn-cta">
-        <Rocket strokeWidth={2} />
-        Ускорить
-      </a>
+      <div
+        class="container flex flex-col items-center justify-center gap-y-4 py-30 pt-20 xl:gap-y-5"
+      >
+        <h1 id="hero-title" class="hero-title">Pugovka Booster</h1>
+        <p class="hero-subtitle">
+          Ускоритель интернета для стабильного доступа к&nbsp;любимым сайтам и&nbsp;сервисам без
+          лишних сложностей
+        </p>
+        <a
+          href="https://cabinet.pugovkabooster.com/"
+          class="btn-cta group/btn"
+          aria-label="Ускорить доступ"
+        >
+          <span class="btn-cta__icon">
+            <Rocket size={24} strokeWidth={2.2} />
+          </span>
+          <span class="btn-cta__text">Ускорить</span>
+        </a>
+      </div>
     </div>
   </section>
-  <section class="relative overflow-hidden" aria-labelledby="advantages-title">
-    <div class="container section">
+  <section class="relative overflow-hidden" aria-labelledby="advantages-title" id="advantages">
+    <div class="section container">
       <h2 id="advantages-title" class="section-title">
         Наши <span class="text-primary">преимущества</span>
       </h2>
-      <div class="grid md:grid-cols-3 grid-cols-1 gap-6 xl:pt-8 pt-6">
+      <div class="grid grid-cols-1 gap-6 pt-6 md:grid-cols-3 xl:pt-8">
         {
           [
             {
@@ -73,18 +92,16 @@ import {
               description: "Наша команда всегда готова помочь 24/7",
             },
           ].map((item) => (
-            <div class="group relative card-interactive p-6">
+            <div class="group card-interactive relative p-6">
               <div class="card-overlay group-hover:from-primary/5 group-hover:to-transparent" />
               <div class="relative z-10 flex flex-col">
-                <div class="text-primary mb-3 group-hover:-translate-y-1 transition-transform duration-300">
+                <div class="text-primary mb-3 transition-transform duration-300 group-hover:-translate-y-1">
                   {item.icon}
                 </div>
-                <h3 class="text-xl mb-1 font-bold text-neutral-100 group-hover:text-primary transition-colors duration-300">
+                <h3 class="group-hover:text-primary mb-1 text-xl font-bold text-neutral-100 transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p class="text-neutral-400 text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <p class="text-sm leading-relaxed text-neutral-400">{item.description}</p>
               </div>
             </div>
           ))
@@ -92,53 +109,43 @@ import {
       </div>
     </div>
   </section>
-  <section
-    class="bg-dots relative overflow-hidden"
-    aria-labelledby="youtube-title"
-  >
-    <div class="container min-h-screen flex items-center justify-center py-20">
+  <section class="bg-dots relative overflow-hidden" aria-labelledby="youtube-title" id="youtube">
+    <div class="container flex min-h-screen items-center justify-center py-20">
       <div
-        class="group/card relative bg-neutral-900 w-full md:max-w-2xl card-interactive p-8 cursor-default"
+        class="group/card card-interactive relative w-full cursor-default bg-neutral-900 p-8 md:max-w-2xl"
       >
-        <div
-          class="card-overlay group-hover/card:from-primary/5 group-hover/card:to-transparent"
-        >
+        <div class="card-overlay group-hover/card:from-primary/5 group-hover/card:to-transparent">
         </div>
-        <div class="relative z-10 flex flex-col md:flex-row gap-6 items-start">
+        <div class="relative z-10 flex flex-col items-start gap-6 md:flex-row">
           <div
-            class="shrink-0 w-16 h-16 rounded-2xl bg-neutral-800 border border-neutral-700/50 flex items-center justify-center text-primary group-hover/card:scale-105 group-hover/card:border-primary/30 transition-all duration-300"
+            class="group-hover/card:border-primary/30 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-neutral-700/50 transition-all duration-300 group-hover/card:scale-105"
           >
-            <Youtube size={32} strokeWidth={2} />
+            <img class="rounded-2xl" src="/pugovkin.webp" alt="Канал Пуговкина" />
           </div>
-          <div class="flex flex-col gap-2 min-w-0">
+          <div class="flex min-w-0 flex-col gap-2">
             <h3
               id="youtube-title"
-              class="text-xl font-bold text-neutral-100 group-hover/card:text-primary transition-colors duration-300"
+              class="group-hover/card:text-primary text-xl font-bold text-neutral-100 transition-colors duration-300"
             >
               Создано при участии команды
             </h3>
-            <p class="text-neutral-400 leading-relaxed">
+            <p class="leading-relaxed text-neutral-400">
               Этот ускоритель интернета создан при участии YouTube-канала
               <a
-                class="inline-flex items-center gap-1.5 text-primary font-semibold transition-all duration-300 focus-ring active:opacity-90 rounded"
+                class="text-primary focus-ring inline-flex items-center gap-1.5 rounded font-semibold transition-all duration-300 active:opacity-90"
                 href="https://www.youtube.com/channel/UCcCD--ZQ7A8qq3SXGX9zAtg"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Пуговкина
-                <ExternalLink
-                  size={16}
-                  strokeWidth={2}
-                  class="inline opacity-80"
-                />
-              </a>. Мы делаем инструменты, которые упрощают доступ к привычным
-              онлайн-сервисам.
+                <ExternalLink size={16} strokeWidth={2} class="inline opacity-80" />
+              </a>. Мы делаем инструменты, которые упрощают доступ к привычным онлайн-сервисам.
             </p>
             <a
               href="https://www.youtube.com/channel/UCcCD--ZQ7A8qq3SXGX9zAtg"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-secondary self-start mt-1"
+              class="btn-secondary mt-1 self-start"
             >
               <Youtube size={20} strokeWidth={2} />
               Смотреть на YouTube
@@ -149,20 +156,17 @@ import {
     </div>
   </section>
   <section aria-labelledby="tariffs-title" id="tariffs">
-    <div class="container section">
+    <div class="section container min-h-screen">
       <h2 id="tariffs-title" class="section-title">
         Лучшие <span class="text-primary">тарифы</span>
       </h2>
-      <div
-        class="flex md:flex-row flex-col justify-between items-center gap-8 xl:pt-8 pt-6"
-      >
-        <div class="w-full flex flex-col gap-6">
+      <div class="flex flex-col items-center justify-between gap-8 pt-6 md:flex-row xl:pt-8">
+        <div class="flex w-full flex-col gap-6">
           {
             [
               {
                 title: "Ускоритель интернета",
-                description:
-                  "Тарифный план для регионов, где не работают любимые сервисы",
+                description: "Тарифный план для регионов, где не работают любимые сервисы",
                 badge: "ПОПУЛЯРНЫЙ",
                 devices: "10 Устройств",
                 servers: "1 Сервер",
@@ -170,8 +174,7 @@ import {
               },
               {
                 title: "Ускоритель чебурнета",
-                description:
-                  "Тарифный план для регионов, где работают только российские сервисы",
+                description: "Тарифный план для регионов, где работают только российские сервисы",
                 badge: null,
                 devices: "10 Устройств",
                 servers: "2 Сервера",
@@ -186,59 +189,56 @@ import {
                 price: "30.00 ₽",
               },
             ].map((tariff) => (
-              <div class="group relative card-gradient card-gradient--lift-sm p-6">
+              <div class="group card-gradient card-gradient--lift-sm relative p-6">
                 {tariff.badge && (
-                  <div class="absolute -top-3 right-5.5 text-xs font-bold px-3 py-1 rounded-full bg-primary text-neutral-900">
+                  <div class="bg-primary absolute -top-3 right-5.5 rounded-full px-3 py-1 text-xs font-bold text-neutral-900">
                     {tariff.badge}
                   </div>
                 )}
                 <div class="flex flex-col gap-4">
                   <div>
-                    <h3 class="text-2xl font-bold text-neutral-100 mb-2">
-                      {tariff.title}
-                    </h3>
+                    <h3 class="mb-2 text-2xl font-bold text-neutral-100">{tariff.title}</h3>
                     <p class="text-neutral-400">{tariff.description}</p>
                   </div>
-                  <div class="flex flex-wrap items-center md:gap-3 gap-2 text-sm">
-                    <div class="flex items-center gap-2 bg-neutral-800/50 px-3 py-1.5 rounded-lg">
+                  <div class="flex flex-wrap items-center gap-2 text-sm md:gap-3">
+                    <div class="flex items-center gap-2 rounded-lg bg-neutral-800/50 px-3 py-1.5">
                       {tariff.title === "Тариф на сутки" ? (
                         <span class="text-primary font-semibold">3 ГБ</span>
                       ) : (
                         <>
                           <Infinity class="size-4 text-neutral-300" />
-                          <span class="text-primary font-semibold">
-                            Безлимит
-                          </span>
+                          <span class="text-primary font-semibold">Безлимит</span>
                         </>
                       )}
                     </div>
-                    <div class="bg-neutral-800/50 px-3 py-1.5 rounded-lg">
+                    <div class="rounded-lg bg-neutral-800/50 px-3 py-1.5">
                       <span class="text-neutral-300">{tariff.devices}</span>
                     </div>
-                    <div class="bg-neutral-800/50 px-3 py-1.5 rounded-lg">
+                    <div class="rounded-lg bg-neutral-800/50 px-3 py-1.5">
                       <span class="text-neutral-300">{tariff.servers}</span>
                     </div>
                   </div>
-                  <div class="border-t pt-4 border-neutral-700 flex items-center justify-between">
+                  <div class="flex items-center justify-between border-t border-neutral-700 pt-4">
                     <div>
-                      <p class="text-3xl font-bold text-primary">
-                        <span class="text-neutral-400 text-sm">от</span>
+                      <p class="text-primary text-3xl font-bold">
+                        <span class="text-sm text-neutral-400">от</span>
                         {tariff.price}
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      class="bg-primary cursor-pointer text-neutral-900 px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 active:bg-primary/90 transition-colors"
+                    <a
+                      href="https://cabinet.pugovkabooster.com/"
+                      class="bg-primary hover:bg-primary/90 active:bg-primary/90 cursor-pointer rounded-lg px-6 py-2 font-semibold text-neutral-900 transition-colors"
+                      target="_blank"
                     >
                       Выбрать
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
             ))
           }
         </div>
-        <div class="md:flex hidden w-full items-center justify-center">
+        <div class="hidden w-full items-center justify-center md:flex">
           <img
             class="rounded-2xl"
             src="/miyabi.webp"
@@ -252,43 +252,38 @@ import {
     </div>
   </section>
   <section class="bg-grid" aria-labelledby="more-title">
-    <div class="container section">
+    <div class="section container">
       <h2 id="more-title" class="section-title--center">А еще...</h2>
-      <div class="grid md:grid-cols-3 grid-cols-1 gap-8 pt-8">
+      <div class="grid grid-cols-1 gap-8 pt-8 md:grid-cols-3">
         {
           [
             {
               icon: <Handshake size={56} strokeWidth={2} />,
               title: "Реферальная программа",
-              description:
-                "Приглашайте друзей и получайте бонусы за каждого нового пользователя",
+              description: "Приглашайте друзей и получайте бонусы за каждого нового пользователя",
             },
             {
               icon: <BadgePercent size={56} strokeWidth={2} />,
               title: "Программа лояльности",
-              description:
-                "Накопительные скидки и специальные предложения для постоянных клиентов",
+              description: "Накопительные скидки и специальные предложения для постоянных клиентов",
             },
             {
               icon: <Waypoints size={56} strokeWidth={2} />,
               title: "Быстрое развитие сервиса",
-              description:
-                "Мы постоянно улучшаем сервис, добавляем новые функции и серверы",
+              description: "Мы постоянно улучшаем сервис, добавляем новые функции и серверы",
             },
           ].map((item) => (
-            <div class="group relative card-gradient card-gradient--lift from-primary/5 via-primary/0 to-primary/2 p-8">
+            <div class="group card-gradient card-gradient--lift from-primary/5 via-primary/0 to-primary/2 relative p-8">
               <div class="card-overlay group-hover:from-primary/5 group-hover:to-transparent" />
-              <div class="relative z-10 flex flex-col items-center text-center gap-4">
-                <div class="text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <div class="relative z-10 flex flex-col items-center gap-4 text-center">
+                <div class="text-primary transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
                   {item.icon}
                 </div>
-                <h3 class="text-2xl font-bold text-neutral-100 group-hover:text-primary transition-colors duration-300">
+                <h3 class="group-hover:text-primary text-2xl font-bold text-neutral-100 transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p class="text-neutral-400 leading-relaxed">
-                  {item.description}
-                </p>
-                <div class="mt-2 w-16 h-1 bg-primary/50 group-hover:w-24 transition-all duration-300" />
+                <p class="leading-relaxed text-neutral-400">{item.description}</p>
+                <div class="bg-primary/50 mt-2 h-1 w-16 transition-all duration-300 group-hover:w-24" />
               </div>
             </div>
           ))
@@ -297,24 +292,18 @@ import {
     </div>
   </section>
   <section class="relative overflow-hidden" aria-labelledby="quote-ref">
-    <div
-      class="container min-h-screen flex flex-col gap-y-12 xl:gap-y-16 justify-center section"
-    >
-      <div
-        class="group/quote relative card-interactive p-8 md:p-10 cursor-default max-w-4xl"
-      >
-        <div
-          class="card-overlay group-hover/quote:from-primary/5 group-hover/quote:to-transparent"
-        >
+    <div class="section container flex min-h-screen flex-col justify-center gap-y-12 xl:gap-y-16">
+      <div class="group/quote card-interactive relative max-w-4xl cursor-default p-8 md:p-10">
+        <div class="card-overlay group-hover/quote:from-primary/5 group-hover/quote:to-transparent">
         </div>
         <div class="relative z-10 flex gap-x-4">
           <Quote
             size={40}
-            className="shrink-0 text-primary fill-primary rotate-180 mt-1 group-hover/quote:scale-110 transition-transform duration-300"
+            className="text-primary fill-primary mt-1 shrink-0 rotate-180 transition-transform duration-300 group-hover/quote:scale-110"
           />
           <blockquote
             id="quote-ref"
-            class="md:text-5xl text-3xl flex flex-col font-semibold leading-tight"
+            class="flex flex-col text-3xl leading-tight font-semibold md:text-5xl"
           >
             Ваше окно в&nbsp;мир должно быть открыто.
             <span class="text-primary">Мы&nbsp;за&nbsp;этим следим.</span>
@@ -322,14 +311,12 @@ import {
         </div>
       </div>
 
-      <div
-        class="flex flex-col md:flex-row md:items-end md:justify-between gap-10 md:gap-8"
-      >
+      <div class="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-8">
         <div
-          class="group/author flex items-center z-20 gap-4 p-4 rounded-2xl border border-neutral-700/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 active:border-primary/40 active:shadow-xl active:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 active:-translate-y-1 w-fit"
+          class="group/author hover:border-primary/40 hover:shadow-primary/10 active:border-primary/40 active:shadow-primary/10 z-20 flex w-fit items-center gap-4 rounded-2xl border border-neutral-700/50 p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl active:-translate-y-1 active:shadow-xl"
         >
           <img
-            class="rounded-xl md:size-20 size-14 ring-2 ring-neutral-700 group-hover/author:ring-primary/40 transition-all duration-300"
+            class="group-hover/author:ring-primary/40 size-14 rounded-xl ring-2 ring-neutral-700 transition-all duration-300 md:size-20"
             src="/pugovkin.webp"
             alt="Пуговкин — автор цитаты"
             width="80"
@@ -337,20 +324,18 @@ import {
             loading="lazy"
           />
           <div>
-            <p class="text-neutral-400 text-sm font-medium">Говорит</p>
+            <p class="text-sm font-medium text-neutral-400">Говорит</p>
             <h2
-              class="md:text-3xl text-2xl font-semibold text-neutral-100 group-hover/author:text-primary transition-colors duration-300"
+              class="group-hover/author:text-primary text-2xl font-semibold text-neutral-100 transition-colors duration-300 md:text-3xl"
             >
               Пуговкин
             </h2>
           </div>
         </div>
 
-        <div
-          class="relative flex flex-col items-center justify-center min-h-[180px] md:min-h-[220px]"
-        >
+        <div class="relative flex min-h-45 flex-col items-center justify-center md:min-h-55">
           <svg
-            class="absolute inset-0 w-full h-full scale-150 md:scale-[1.8] opacity-90 pointer-events-none"
+            class="pointer-events-none absolute inset-0 h-full w-full scale-150 opacity-90 md:scale-[1.8]"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1160 531.36"
             role="img"
@@ -375,8 +360,9 @@ import {
             ></path>
           </svg>
           <a
-            href="#"
-            class="link-hero-cta relative z-10 md:text-4xl text-2xl py-6 px-4"
+            href="https://cabinet.pugovkabooster.com/"
+            class="link-hero-cta relative z-10 px-4 py-6 text-2xl md:text-4xl"
+            target="_blank"
           >
             Пришло время <span class="text-primary">ускорять</span> твой интернет
           </a>

@@ -2,30 +2,27 @@
 import { Coins, User, Menu, X } from "lucide-preact";
 
 const navLinks = [
-  { href: "#tariffs", label: "Цены", icon: Coins },
-  { href: "#", label: "Почему мы" },
-  { href: "#", label: "О нас" },
+  { href: "/#tariffs", label: "Цены", icon: Coins },
+  { href: "/#advantages", label: "Почему мы" },
+  { href: "/#youtube", label: "О нас" },
 ];
 ---
 
 <header
-  class="header fixed w-full top-0 z-30 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300"
+  class="header fixed top-0 z-40 flex h-20 w-full items-center border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300"
   role="banner"
 >
   <div
-    class="header__container container flex justify-between items-center py-4 px-5 relative z-30"
+    class="header__container relative z-40 container flex items-center justify-between px-5 py-4"
   >
     <a
-      class="header__logo flex font-bold text-xl md:text-2xl text-neutral-100 hover:text-primary active:text-primary transition-colors duration-300 focus-ring rounded"
-      href="#"
+      class="header__logo hover:text-primary active:text-primary focus-ring flex rounded text-xl font-bold text-neutral-100 transition-colors duration-300 md:text-2xl"
+      href="/"
     >
-      Pugovka
+      <img src="/logo.webp" alt="Логотип Pugovka Booster" class="w-24" />
     </a>
 
-    <nav
-      class="header__nav hidden md:flex items-center gap-x-1"
-      aria-label="Основное"
-    >
+    <nav class="header__nav hidden items-center gap-x-1 md:flex" aria-label="Основное">
       {
         navLinks.map((item) => {
           const Icon = item.icon;
@@ -40,13 +37,17 @@ const navLinks = [
     </nav>
 
     <div class="flex items-center gap-x-2">
-      <a class="link-outline hidden! md:inline-flex! focus-ring" href="#">
+      <a
+        class="link-outline focus-ring hidden! md:inline-flex!"
+        href="https://cabinet.pugovkabooster.com/"
+        target="_blank"
+      >
         <User size={20} strokeWidth={2} />
         Кабинет
       </a>
       <button
         type="button"
-        class="mobile-menu-btn btn-icon flex md:hidden! focus-ring"
+        class="mobile-menu-btn btn-icon focus-ring flex md:hidden!"
         aria-expanded="false"
         aria-controls="mobile-nav"
         aria-label="Открыть меню"
@@ -59,29 +60,31 @@ const navLinks = [
 
   <div
     id="mobile-nav"
-    class="mobile-nav hidden fixed inset-0 z-20 flex-col min-h-dvh pt-24 pb-8 px-5 bg-neutral-900"
+    class="mobile-nav fixed inset-0 z-30 hidden min-h-dvh flex-col bg-neutral-900 px-5 pt-24 pb-8"
     aria-hidden="true"
     aria-label="Мобильное меню"
   >
-    <div class="flex flex-col gap-1 flex-1 min-h-0">
+    <div class="flex min-h-0 flex-1 flex-col gap-1">
       {
         navLinks.map((item) => {
           const Icon = item.icon;
           return (
             <a
-              class="link-nav gap-x-3 py-3.5 border border-transparent hover:border-neutral-700/50 active:border-neutral-700/50 text-neutral-200"
+              class="link-nav gap-x-3 border border-transparent py-3.5 text-neutral-200 hover:border-neutral-700/50 active:border-neutral-700/50"
               href={item.href}
             >
-              {Icon ? (
-                <Icon size={22} strokeWidth={2} className="text-primary/80" />
-              ) : null}
+              {Icon ? <Icon size={22} strokeWidth={2} className="text-primary/80" /> : null}
               {item.label}
             </a>
           );
         })
       }
     </div>
-    <a class="btn-primary mt-auto shrink-0 rounded-xl px-4 py-3.5" href="#">
+    <a
+      class="btn-primary mt-auto shrink-0 rounded-xl px-4 py-3.5"
+      href="https://cabinet.pugovkabooster.com/"
+      target="_blank"
+    >
       <User size={22} strokeWidth={2} />
       Кабинет
     </a>
@@ -89,52 +92,50 @@ const navLinks = [
 </header>
 
 <script>
-  function initHeaderScroll() {
+  const initHeaderScroll = () => {
     const header = document.querySelector(".header");
     if (!header) return;
     const headerEl = header;
-    function updateHeader() {
+    const updateHeader = () => {
       headerEl.classList.toggle("header--scrolled", window.scrollY > 0);
-    }
+    };
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
-  }
+  };
 
-  function initMobileMenu() {
+  const initMobileMenu = () => {
     const btn = document.querySelector(".mobile-menu-btn");
     const nav = document.getElementById("mobile-nav");
     if (!btn || !nav) return;
     const btnEl = btn;
     const navEl = nav;
 
-    function openMenu() {
+    const openMenu = () => {
       navEl.classList.remove("hidden");
       navEl.classList.add("flex");
       btnEl.setAttribute("aria-expanded", "true");
       btnEl.setAttribute("aria-label", "Закрыть меню");
       document.body.style.overflow = "hidden";
-    }
+    };
 
-    function closeMenu() {
+    const closeMenu = () => {
       navEl.classList.add("hidden");
       navEl.classList.remove("flex");
       btnEl.setAttribute("aria-expanded", "false");
       btnEl.setAttribute("aria-label", "Открыть меню");
       document.body.style.overflow = "";
-    }
+    };
 
-    function toggleMenu() {
+    const toggleMenu = () => {
       navEl.classList.contains("flex") ? closeMenu() : openMenu();
-    }
+    };
 
     btnEl.addEventListener("click", toggleMenu);
-    navEl
-      .querySelectorAll("a")
-      .forEach((link) => link.addEventListener("click", closeMenu));
+    navEl.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && navEl.classList.contains("flex")) closeMenu();
     });
-  }
+  };
 
   initMobileMenu();
   initHeaderScroll();
