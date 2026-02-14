@@ -36,17 +36,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <!-- Font preload -->
     <link
       rel="preload"
-      href="/fonts/google-sans-v67-cyrillic_latin-700.woff2"
+      href="/fonts/google-sans-v67-cyrillic_latin-500.woff2"
       as="font"
       type="font/woff2"
       crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/google-sans-v67-cyrillic_latin-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
+      fetchpriority="high"
     />
 
     <!-- Performance hints -->
